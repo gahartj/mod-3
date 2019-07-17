@@ -20,13 +20,13 @@ END FUNCTION
 
 No- I would not consider this code to be clean. The abundance of comments is a red flag for me. If there's that much need for commenting, then the code can probably be written better, specifically the variables and the naming of the function can be improved. All of the variable names are just letters, and we can make them specific to task that we're working on. Refactored:
 
-FUNCTION fahrenheitToCelsius (x, y)
-  IF y = "F" THEN
-  SET temperature to (x-32) * (5/9)
-  PRINT temperature
-  ELSE IF y = "C" THEN
-  SET temperature to x * 1.8000 + 32.00
-  PRINT temperature
+FUNCTION fahrenheitToCelsius (temperature1, temperature2)
+  IF temperature1 = "F" THEN
+  SET degreesFahrenheit to (temperature2 - 32) * (5/9)
+  PRINT degreesFahrenheit
+  ELSE IF temperature1 = "C" THEN
+  SET degreesCelsuis to temperature2 * 1.8000 + 32.00
+  PRINT degreesCelsuis
   END IF
 END FUNCTION
 
@@ -62,18 +62,19 @@ END FUNCTION
 
 Refactored:
 
-FUNCTION checkOutCustomer(subTotal, discountRate)
-   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
- END FUNCTION
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+  total = subTotal * discountRate + (subTotal * tax)
+  PRINT "Your total due is: " + total
 
-FUNCTION customerPayment(subTotal, discountRate, paymentType)
-   IF paymentType = 'CASH' THEN
-       CALL getPayment RETURNING amount
-       PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
-   ELSE IF paymentType = 'CREDIT CARD' THEN
-       CALL getPayment RETURNING amount
-       PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
-   END IF
+  IF paymentType = 'CASH' THEN
+  	CALL getPayment RETURNING amount 
+  	 PRINT "Change due: " + amount – total
+
+  ELSE IF paymentType = 'CREDIT CARD' THEN
+  	CALL getPayment RETURNING amount
+  	 PRINT "Your credit card has been charged: " + total
+
+  END IF
 END FUNCTION
 
 b. The following function checks out a book if there are no issues with the guest's account.
@@ -95,14 +96,12 @@ END FUNCTION
 Refactored:
 
 FUNCTION checkoutBook(book, guest)
- IF guest.accountActive AND guest.outstandingFees = 0 THEN
-   IF NOT(guest.hasOverdueBooks) THEN
-           APPEND book to guest.books
-           SET book.status to "Checked Out"
-           PRINT "Your books have been issued."
+ IF guest.accountActive AND guest.outstandingFees = 0 AND NOT guest.hasOverdueBooks THEN
+       APPEND book to guest.books
+       SET book.status to "Checked Out"
+       PRINT "Your books have been issued."
   ELSE
      PRINT "Unable to check out book."
-  END IF
  END IF
 END FUNCTION
 
