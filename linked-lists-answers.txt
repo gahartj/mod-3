@@ -32,14 +32,14 @@ END FUNCTION
 We need a means to move from node to node in the list, in order to set current node to current.next. We can do this with a while loop.
 
 class LinkedListNode {
-    constructor(data, next = null){
-        this.data = data,
-        this.next = next
+    constructor(data) {
+        this.data = data;
+        this.next = null;
     }
 }
 
 class LinkedList {
-    constructor(){
+    constructor() {
         this.head = null;
     }
 
@@ -58,9 +58,10 @@ class LinkedList {
    }
 }
 
-const name = new LinkedList();
-name.add("Jake");
-name.add("Gahart");
+const avengers = new LinkedList();
+avengers.add("Stark");
+avengers.add("Banner");
+console.log(avengers);
 
 
 2. Given an unsorted singly linked list, remove all duplicates from the linked list.
@@ -68,7 +69,84 @@ Example
 Input: a -> c -> d -> d -> a
 Output: a -> c -> d
 
+class LinkedListNode {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    add(data) {
+      const newNode = new LinkedListNode(data);
+
+      if (this.head === null) {
+        this.head = newNode;
+      } else {
+        let current = this.head;
+        while (current.next !== null) {
+          current = current.next;
+        }
+        current.next = newNode;
+      }
+   }
+
+   removeDuplicates() {
+       let current = this.head;
+       while(current != null) {
+         if(!current.data) {
+           current.data = true;
+         } else {
+           current = current.next;
+           this.size--;
+         }
+       }
+     }
+
+}
+
+let newList = new LinkedList();
+newList.add("a");
+newList.add("c");
+newList.add("d");
+newList.add("d");
+newList.add("a");
+newList.removeDuplicates();
+console.log(newList);
+
+
 3. Given an unsorted singly linked list, reverse it.
 Example
 Input: a -> b -> c -> d
 Output: d -> c -> b -> a
+
+let avengers = {
+  value: "Stark",
+  next: {
+    value: "Banner",
+    next: {
+      value: "Parker",
+      next: null
+    }
+  }
+}
+
+
+function reverseList(list) {
+  let node = list;
+  let previous = null;
+
+  while(node != null) {
+    let nodeNext = node.next;
+    node.next = previous;
+    previous = node;
+    node = nodeNext;
+  }
+  return previous;
+}
+
+console.log(reverseList(avengers));
