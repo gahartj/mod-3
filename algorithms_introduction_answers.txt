@@ -1,0 +1,50 @@
+####Exercises
+
+Using proper pseudo-code, describe the following primitive algorithms:
+
+Making coffee;
+FUNCTION makeCoffee
+	SET frenchPress equal to null
+	WHILE grounds AND water AND filter are TRUE
+		ADD grounds AND water times six grounds AND filter
+		SET to frenchPress
+	END WHILE
+	IF grounds OR water OR filter are FALSE
+		RETURN Can’t make coffee!
+	END IF
+	RETURN frenchPress
+END FUNCTION
+
+Washing dishes;
+FUNCTION washDishes(numberOfDishes)
+	SET FULL to 20
+	IF numberOfDishes is equal to FULL
+		CALL emptyDishWasher
+	ELSE
+		CALL loadDishWasher
+	END IF
+	CALL runDishWasher
+END FUNCTION
+
+A choice of your own - get dressed for work;
+FUNCTION getDressed(pants, shirt)
+	WHILE pants AND shirt are equal to TRUE
+		CALL putOnPants
+		CALL putOnShirt
+	END WHILE
+	IF pants OR shirt are equal to false
+		CALL callInSickToWork
+	END IF
+END FUNCTION
+
+As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+Microsoft: Word. Document creation is an essential part of the everyday life of those in school, at work, or just for leisure. The number of features and ease of use has made Microsoft Word (probably) the most used word processor.
+
+TrackMan Golf launch monitor. This product allows a golfer to track and see elements of a golf swing and ball flight including club head speed, ball launch angle, max height, and distance. All of these combined have made it possible for golfers, from professionals to weekenders, to get a better feel for how they hit the golf ball. TrackMan is the best on the market and has set itself apart because of its instant feedback and numerous features.
+
+Netflix or Hulu. Both of these companies have created features that give consumers “suggested” or “recommended” options for shows and movies. Part of the popularity of these two is that you can find great shows or movies through these features that you otherwise may not have considered or known about. They do this by taking into account the shows and movies that have been previously watched and matching those with similar genres, actors/actresses, time periods, and more.
+
+Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+I think much of this question is very relative to the problem at hand. Efficiency is directly related to resource consumption, and the priority of resource consumption could vary based on the problem. What I’m talking about is speed v. memory or space. An algorithm may be considered “efficient” and of highest performance if it the run time meets or exceeds an acceptable level (regardless of space/memory used) or vice versa. 
