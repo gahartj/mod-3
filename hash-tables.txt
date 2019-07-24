@@ -50,11 +50,11 @@ let HashTable = function() {
   let storage = [];
   const storageLimit = 100;
 
-  this.add = function(key,value) {
+  this.add = function(key, value) {
     let index = hash(key, storageLimit);
     if (storage[index] === undefined) {
       storage[index] = [
-        [key,value]
+        [key, value]
       ];
     } else {
       let inserted = false;
@@ -65,7 +65,7 @@ let HashTable = function() {
         }
       }
       if (inserted === false) {
-        storage[index].push([key,value]);
+        storage[index].push([key, value]);
       }
     }
   };
@@ -86,14 +86,128 @@ let HashTable = function() {
 };
 
 let avengers = new HashTable();
-avengers.add(1234,{name:'Stark', address:'Stark Tower'})
-avengers.add(5678,{name:'Peter Parker',address:'Queens'});
-avengers.add(9012,{name:'Thor',address:'Asgard'});
-
-console.log(avengers.lookup(1234));
-console.log(avengers.lookup(5678));
-console.log(avengers.lookup(9012));
-
+avengers.add(1234567890,{name:'Stark', address:'Stark Tower', number: 1234567890})
+avengers.add(4567890123,{name:'Peter Parker', address:'Queens', number: 4567890123});
+avengers.add(8901234567,{name:'Thor',address:'Asgard', number: 8901234567});
+console.log(avengers.lookup(1234567890));//{name:'Stark', address:'Stark Tower', number: 1234567890}
 
 2. Create a hash table that allows a store owner to track their store's inventory and quantity.
+
+let hash = (string, max) => {
+  let hash = 0;
+  for (let i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+let HashTable = function() {
+
+  let storage = [];
+  const storageLimit = 100;
+
+  this.add = function(key, value) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key, value]
+      ];
+    } else {
+      let inserted = false;
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.delete = function(key) {
+    let index = hash(key, storageLimit);
+    if (storage[index].length === 1 && storage[index][0][0] === key) {
+      delete storage[index];
+    } else {
+      for (let i =0; i < storage[index]; i++) {
+        if (storage[index][i][0] === key) {
+          delete storage[index][i];
+        }
+      }
+    }
+  };
+
+  this.lookup = function(key) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+};
+
+let inventory = new HashTable();
+inventory.add('hammer', 30);
+inventory.add('screw driver', 15);
+inventory.add('drill', 12);
+console.log(inventory);
+
+
 3. Create a hash table that allows digital copies of newspapers to be entered and searched by publisher and publication date.
+
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length; i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+class DigitalNewspaper {
+  constructor() {
+    this.storage = [];
+    this.storageLimit = 60;
+  }
+
+  add(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let data = [publisher, pubDate];
+      if (this.storage[index] === undefined) {
+        this.storage[index] = [ ];
+    }
+    this.storage[index].push(data);
+    }
+
+  search(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let result = [];
+
+    if (!this.storage[index]) { return 'No results were found for this search' }
+      this.storage[index].forEach(entry => {
+       if (entry[0] === publisher && entry[1] === pubDate) {
+        result.push(entry);
+      }
+    })
+    return result;
+  }
+}
+
+
+let news = new DigitalNewspaper();
+news.add('USA Today', 'January 11, 1991');
+news.add('The Wall Street Journal', 'July 11, 1989');
+news.add('The Washington Post','October 12, 1957');
+news.add('New York Times', 'October 31, 1996');
+news.add('Milwaukee Journal Sentinel', 'Janaury 24, 1965');
+
+console.log(news);
