@@ -43,7 +43,7 @@ class LinkedList {
         this.head = null;
     }
 
-    add(data) {
+    push(data) {
       const newNode = new LinkedListNode(data);
 
       if (this.head === null) {
@@ -59,8 +59,9 @@ class LinkedList {
 }
 
 const avengers = new LinkedList();
-avengers.add("Stark");
-avengers.add("Banner");
+avengers.push("Stark");
+avengers.push("Banner");
+avengers.push("Rogers");
 console.log(avengers);
 
 
@@ -96,16 +97,34 @@ class LinkedList {
    }
 
    removeDuplicates() {
-       let current = this.head;
-       while(current != null) {
-         if(!current.data) {
-           current.data = true;
-         } else {
-           current = current.next;
-           this.size--;
-         }
+     if (!this.head || !this.head.next) {
+         console.log('No duplicates!');
+         return;
        }
-     }
+
+       let p1;
+       let p2;
+       let p3;
+       let val;
+       p2 = this.head;
+
+       while (p2) {
+         val = p2.data;
+         p1 = p2;
+         p3 = p1.next;
+
+         while (p3) {
+           if (p3.data === val) {
+               p1.next = p3.next;
+           } else {
+             p1 = p3;
+           }
+           p3 = p3.next;
+         }
+
+         p2 = p2.next;
+       }
+   }
 
 }
 
