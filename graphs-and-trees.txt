@@ -34,3 +34,19 @@ Example: The value 10 exists in the tree. The value 23 does not exist in the tre
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+FUNCTION findDistance(n1, n2)
+// you could find the distance between the lca, n1, n2 and the root.
+// then add the distance from the root and n1, n2 and subtract distance from root to lca.
+//find distance between the root and each node.
+//need to find the lowest common ancestor
+//recursive FUNCTION
+function findLca(root, n1, n2) {
+  if (root > n1 && root > n2) {
+    findLca(root.left, n1, n2)
+  } else if (root < n1 && root < n2) {
+    findLca(root.right, n1, n2)
+  }
+
+  return root
+}
