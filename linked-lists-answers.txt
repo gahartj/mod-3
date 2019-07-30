@@ -2,7 +2,7 @@
 
 1. What are some pros and cons of using linked lists instead of arrays?
 
-Pros - Elements do not have to shift, like in an array, when items are added or deleted. Linked Lists can grow to much larger sizes as compared to arrays. Inserting and deleting items in a linked list is faster than in an array.
+*Revised* Pros - Linked lists do not waste any memory space, giving it a big advantage over arrays. Because each node contains data and a pointer to the next node, the list can grow without having any unused space, which is different from an array which could have unused memory when items are deleted. Also, the size of a linked list is "dynamic", meaning the size of the list does not need to be known beforehand. 
 
 Cons - When trying to find a specific element, you have to start with the first (head) item and search one by one. This is not very efficient. Requires more memory.
 
