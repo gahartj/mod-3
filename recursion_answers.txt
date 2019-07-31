@@ -1,0 +1,50 @@
+####Exercises
+1. Define and compare recursion and iteration.
+
+Recursion is when a function that calls itself. Iteration is a program that utilizes a loop. They both essentially are execution of a set of code repetitively. When conditions are not met in iteration, an infinite loop can be the result, while similarly, a program crash can be a result of a recursive function when required conditions are not met. In recursion, variables are stored in a "stack," as compared to iteration which does not require a stack. In most cases, iteration will be the more efficient solution compared to recursion because it usually requires more memory.
+
+2. Name five algorithms that are commonly implemented by recursion.
+
+factorial of a number, fibonacci sequence, greatest common divisor, towers of Hanoi, and binary tree
+
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+Recursion should be used when you can take a problem and divide it into smaller problems, solving those problems, and ultimately reassembling them into the final solution. Because recursion is often slower and requires more memory, use of iteration is the preferable solution. Repetition of calculations is the biggest issue with recursion, which causes inefficiencies when compared with iteration.
+
+Factorial of a number is an example of best uses for recursion, and the fibonacci sequence is better implemented with iteration, as compared to recursion.
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+
+In each solution, they are similar in that they both achieve their goal- they are both a means to an end. The biggest difference in is efficiency. The factorial solution is better suited for recursion because of its layers of sub-results. The finding the maximum and fibonacci solutions is more efficient with iteration because it is running straight through a data set. When recursion is used with these two, performance is sacrificed because of a build up of calculations. 
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+function count(collection) {
+  if (collection.length) {
+    return 1 + count(collection.slice(1));
+  } else {
+    return 0;
+  }
+}
+
+console.log(count([1, 2, 3, 4]));//returns 4
+
+
+6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+function palindrome(word) {
+  if (word.length === 0) {
+    return true;
+  }
+  if (word[0] !== word[word.length-1]) {
+    return false;
+  }
+  return palindrome(word.slice(1, word.length-1));
+}
+
+console.log(palindrome("racecar"));//returns true
+console.log(palindrome("Jake"));//returns false
+
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+This is Google's attempt at being clever... recursion is calling itself and has repetitive properties, meaning it will call itself over and over until a certain condition is met. When typing in recursion, it's a jest towards understanding how recursion is self-referencing.
