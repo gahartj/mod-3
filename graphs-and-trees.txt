@@ -31,6 +31,22 @@ Directed, a-cyclic, unweighted graph
 
 Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
 
+function search(findValue) {
+  let currentNode = this.root;
+
+  while (currentNode != null) {
+    if (findValue === currentNode.value) {
+      return true;
+    } else if (findValue < currentNode.value){
+      currentNode = currentNode.left;
+    } else {
+      currentNode = currentNode.right;
+    }
+  }
+  return false;
+}
+
+
 2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
