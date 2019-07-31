@@ -31,6 +31,8 @@ Directed, a-cyclic, unweighted graph
 
 Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
 
+In this example, we will start at the root and compare the target value and the current node. If the target is less than the current node, we will move to the left child of that current node, and if the target value is greater than the current node, we will move to the right child node. This process continues until the value is found or all nodes have been checked.
+
 function search(findValue) {
   let currentNode = this.root;
 
@@ -51,18 +53,25 @@ function search(findValue) {
 
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
 
-FUNCTION findDistance(n1, n2)
-// you could find the distance between the lca, n1, n2 and the root.
-// then add the distance from the root and n1, n2 and subtract distance from root to lca.
-//find distance between the root and each node.
-//need to find the lowest common ancestor
-//recursive FUNCTION
+We need to find the distance from node1 to the root, node2 to the root, and add them together. We then need to find the lowest common ancestor of the two nodes (which may or may not be the root). Add the distance from root to node1 to root to node2 and subtract root to lowest common ancestor.
+
 function findLca(root, n1, n2) {
   if (root > n1 && root > n2) {
     findLca(root.left, n1, n2)
   } else if (root < n1 && root < n2) {
     findLca(root.right, n1, n2)
+  } else {
+    return root;
   }
+}
 
-  return root
+function findDistance(root, node) {
+  let distance = 0;
+  while (root) {
+  if (node === root) {
+  return distance;
+  }
+  root = data <
+  distance++;
+  }
 }
