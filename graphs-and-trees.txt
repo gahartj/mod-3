@@ -65,13 +65,27 @@ function findLca(root, n1, n2) {
   }
 }
 
-function findDistance(root, node) {
+function findDistanceOne(root, n1)
+  let currentNode = root;
   let distance = 0;
-  while (root) {
-  if (node === root) {
-  return distance;
-  }
-  root = data <
-  distance++;
-  }
+
+  if n1 is equal to currentNode
+    return distance
+  else if n1 is less than currentNode
+    set currentNode equal to currentNode.left
+    distance++
+    call findDistanceOne
+  else n1 is greater than currentNode
+    set currentNode equal to currentNode.right
+    distance++
+    call findDistanceOne
+
+      return distance
+
+function findDistanceTwo(root, n2)
+same as distance one
+
+function totalDistance(findDistanceOne, findDistanceTwo, findLca) {
+  (findDistanceOne + findDistanceTwo) - findLca = total distance  
+
 }
