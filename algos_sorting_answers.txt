@@ -1,0 +1,50 @@
+####Exercises
+
+1. Implement a solution for bubble sort.
+
+function bubbleSort(collection) {
+  let swapped = false
+
+  while (swapped != false) {
+    for (let i = 0; i <= collection.length; i++) {
+      if (collection[i] > collection[i] + 1) {
+        temp = collection[i];
+        collection[i] = collection[i] + 1;
+        collection + 1 = temp;
+        swapped = true;
+      } else if {
+        swapped = false;
+      }
+    }
+  }
+}
+
+2. Write pseudocode for quicksort.
+
+FUNCTION quickSort(collection)
+  IF length of collection is less than or equal to 1
+    RETURN collection
+  ELSE
+    SET left, right to empty arrays
+    SET pivot to last item in collection
+    SET length to length of collection
+
+    FOR i = 0 to length -1
+      IF collection[i] is less than or equal to pivot
+        PUSH collection[i] to last index of left
+      ELSE
+        PUSH collection[i] to last index of right
+      END IF
+    END for
+    RETURN quickSort(left).concat(pivot, quickSort(right));
+  END IF
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+Quick sort and merge sort both have a time complexity of O(n log(n)). They are more efficient than the others in this checkout because in both, the number of times that the data is iterated over decreases with each call, or division, of the collection.
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+Bucket sort works by putting elements into "buckets" and then sorting each individual bucket via insertion sort before putting the sorted buckets back to together in order.
+Bucket sort is useful when the input is uniformly distributed over a range.
