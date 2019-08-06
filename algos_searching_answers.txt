@@ -1,0 +1,56 @@
+####Short Answer
+
+1. What is a real-life scenario that uses linear search?
+
+The beloved $5 blu-ray bin at Walmart. You are looking for a specific movie. The movies are a jumbled up heap in the bin, unsorted. One movie at a time, you check to see if it's the movie you want until you find it, or you've checked every movie in the bin.
+
+2. What is a real-life scenario that uses binary search?
+
+Finding someone's number in a phone book (which is a little outdated now, I know). Since the names are sorted alphabetically in a phone book, you could flip to the middle page and determine if you can eliminate the front half or the back half of the book, and repeat until you find the page and name you're looking for.
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+7... As it is the last item in the array, every item before it would be checked before arriving at the G.
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+3... same as the letter E.
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+Linear search- binary needs to be sorted, so you're adding an additional step to the process, potentially making it less efficient. A million is a lot of items to be sorted in order to then search... if it were 100 items unsorted, I would think it might be more efficient to sort it and use binary then in that case.
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+Binary search. Worst case scenario, a linear search goes through all 1,000,000 items, which does not sound as efficient as possible.
+
+####Programming Assignment:
+
+1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+function findWord(word, dictionary) {
+  let low = 0;
+  let high = dictionary.length-1;
+
+  while (low <= high) {
+    let mid = (low + high) / 2;
+    if (dictionary[mid] > word) {
+      high = mid -1;
+    } else if (dictionary[mid] < word) {
+      low = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+  return "Webster don't know that one.";
+}
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+function nabFishy(fish, tank) {
+  for (let i = 0; i < tank.length; i++) {
+    if (fish === tank[i]) {
+      return fish;
+    }
+  }
+}
