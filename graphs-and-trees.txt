@@ -65,27 +65,62 @@ function findLca(root, n1, n2) {
   }
 }
 
-function findDistanceOne(root, n1)
+function findLcaDistance(findLca, root) {
+  let findLca = this.findLca(root, n1, n2);
   let currentNode = root;
   let distance = 0;
 
-  if n1 is equal to currentNode
-    return distance
-  else if n1 is less than currentNode
-    set currentNode equal to currentNode.left
+  if ( === currentNode) {
+    return distance;
+  } else if (findLca < currentNode) {
+    currentNode = currentNode.left;
     distance++
-    call findDistanceOne
-  else n1 is greater than currentNode
-    set currentNode equal to currentNode.right
+    findLcaDistance(currentNode.left, findLca);
+  } else {
+    currentNode = currentNode.right;
+    distance++;
+    findLcaDistance(currentNode.right, findLca);
+  }
+  return distance;
+}
+
+function findDistanceOne(root, n1) {
+  let currentNode = root;
+  let distance = 0;
+
+  if (n1 === currentNode) {
+    return distance;
+  } else if (n1 < currentNode) {
+    currentNode = currentNode.left;
     distance++
-    call findDistanceOne
+    findDistanceOne(currentNode.left, n1);
+  } else {
+    currentNode = currentNode.right;
+    distance++;
+    findDistanceOne(currentNode.right, n1)
+  }
+  return distance;
+}
 
-      return distance
+function findDistanceTwo(root, n2) {
+  let currentNode = root;
+  let distance = 0;
 
-function findDistanceTwo(root, n2)
-same as distance one
+  if (n2 === currentNode) {
+    return distance;
+  } else if (n2 < currentNode) {
+    currentNode = currentNode.left;
+    distance++
+    findDistanceTwo(currentNode.left, n2);
+  } else {
+    currentNode = currentNode.right;
+    distance++;
+    findDistanceTwo(currentNode.right, n2)
+  }
+  return distance;
+}
 
-function totalDistance(findDistanceOne, findDistanceTwo, findLca) {
-  (findDistanceOne + findDistanceTwo) - findLca = total distance  
-
+function totalDistance(findDistanceOne, findDistanceTwo, findLcaDistance) {
+  let distance = (findDistanceOne + findDistanceTwo) - findLcaDistance;
+  return distance;
 }
